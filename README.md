@@ -6,6 +6,7 @@ Este proyecto es un generador de datos en Excel que permite crear y actualizar u
 ## Requisitos
 
 - [Node.js](https://nodejs.org/) instalado en tu computadora.
+- Al Clonar el repositorio hacerlo en el Escritorio dentro de una carpeta dev 
 - Un archivo Excel llamado `excel_carga_masiva.xlsx` en la siguiente ruta: `C:\Users\<TU_USERNAME>\Desktop\dev\Excel_data_generator`.
 
 ## Instalación
@@ -19,7 +20,7 @@ Este proyecto es un generador de datos en Excel que permite crear y actualizar u
 
 
 ```bash
-cd <NOMBRE_DEL_DIRECTORIO>
+cd C:\Users\<TU_USERNAME>\Desktop\dev\Excel_data_generator
 ````
 ````bash
 npm install dotenv xlsx
@@ -33,19 +34,20 @@ Crea un archivo .env en la raíz del proyecto y añade tu nombre de usuario:
 
 ```code
 USER_NAME=TU_USERNAME
-Asegúrate de reemplazar TU_USERNAME con tu nombre de usuario real en el sistema.
-````
 
-Uso
+````
+**Asegúrate de reemplazar TU_USERNAME con tu nombre de usuario real en el sistema.
+
+##Uso
 Cierra el archivo Excel excel_carga_masiva.xlsx si está abierto. IMPORTANTE: El script no funcionará correctamente si el archivo está abierto.
 
 Ejecuta el script:
+```bash
+node cargamasiva.js
+```
+Completar la cantidad de Terminales a Crear
 
-node <NOMBRE_DEL_SCRIPT>.js
 
-Reemplaza <NOMBRE_DEL_SCRIPT> con el nombre del archivo JavaScript que contiene el código.
-
-Cuando se te pregunte, ingresa la cantidad de productos que deseas generar.
 
 #Notas:
 
