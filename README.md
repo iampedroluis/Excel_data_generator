@@ -18,23 +18,23 @@ Este proyecto es un generador de datos en Excel que permite crear y actualizar u
 #Navega al directorio del proyecto:
 
 
-
-
-
 ```bash
 cd <NOMBRE_DEL_DIRECTORIO>
 ````
 ````bash
 npm install dotenv xlsx
 `````
-Instala las dependencias necesarias:
-
+2. Instala las dependencias necesarias:
+```bash
 npm install dotenv xlsx
+```
 
 Crea un archivo .env en la raíz del proyecto y añade tu nombre de usuario:
 
+```code
 USER_NAME=TU_USERNAME
 Asegúrate de reemplazar TU_USERNAME con tu nombre de usuario real en el sistema.
+````
 
 Uso
 Cierra el archivo Excel excel_carga_masiva.xlsx si está abierto. IMPORTANTE: El script no funcionará correctamente si el archivo está abierto.
