@@ -1,39 +1,56 @@
-# Excel_data_generator
 
-# Proyecto de Manipulación de Archivos Excel en Node.js
+# Generador de Datos Excel
 
-Este proyecto permite generar y modificar archivos de Excel, reemplazando datos existentes en un archivo de Excel con datos generados dinámicamente.
+Este proyecto es un generador de datos en Excel que permite crear y actualizar un archivo llamado `excel_carga_masiva.xlsx` con información sobre productos. Utiliza Node.js y la biblioteca `xlsx` para manejar archivos Excel.
 
 ## Requisitos
 
-- Node.js (versión 12 o superior)
-- npm (gestor de paquetes de Node.js)
+- [Node.js](https://nodejs.org/) instalado en tu computadora.
+- Un archivo Excel llamado `excel_carga_masiva.xlsx` en la siguiente ruta: `C:\Users\<TU_USERNAME>\Desktop\dev\Excel_data_generator`.
 
-## Paquetes necesarios
+## Instalación
 
-Antes de ejecutar el proyecto, asegúrate de instalar los siguientes módulos utilizando `npm`:
+1. Clona este repositorio en tu computadora:
 
-1. **xlsx**: Para manipular y generar archivos Excel.
+   ```bash
+   git clone <URL_DEL_REPOSITORIO>
 
-### Instalación de dependencias
+#Navega al directorio del proyecto:
 
-Para instalar los paquetes necesarios, ejecuta el siguiente comando en la terminal:
 
-```bash
-npm install xlsx
+cd <NOMBRE_DEL_DIRECTORIO>
+
+Instala las dependencias necesarias:
+
+npm install dotenv xlsx
+
+Crea un archivo .env en la raíz del proyecto y añade tu nombre de usuario:
+
+USER_NAME=TU_USERNAME
+Asegúrate de reemplazar TU_USERNAME con tu nombre de usuario real en el sistema.
 
 Uso
-El proyecto genera datos y reemplaza los existentes en un archivo Excel (CARGA_MASIVA_GDC.xlsx) ubicado en el escritorio. Sigue estos pasos para ejecutar el código:
+Cierra el archivo Excel excel_carga_masiva.xlsx si está abierto. IMPORTANTE: El script no funcionará correctamente si el archivo está abierto.
 
-Clona o descarga este repositorio en tu máquina local.
-Asegúrate de tener un archivo llamado CARGA_MASIVA_GDC.xlsx en tu escritorio.
-Ejecuta el script usando Node.js:
-node index.js
+Ejecuta el script:
 
-Esto generará nuevos datos y reemplazará los datos antiguos en el archivo CARGA_MASIVA_GDC.xlsx en el escritorio.
+node <NOMBRE_DEL_SCRIPT>.js
 
-Funciones principales
-generarNMU: Genera un identificador único para cada entrada.
-formatearFecha: Formatea las fechas en el formato YYYY-MM-DD.
-generarDatos: Genera un conjunto de datos simulados para insertar en el archivo Excel.
-Manipulación de archivos Excel: El script carga el archivo Excel existente, limpia los datos antiguos y los reemplaza por los nuevos generados.
+Reemplaza <NOMBRE_DEL_SCRIPT> con el nombre del archivo JavaScript que contiene el código.
+
+Cuando se te pregunte, ingresa la cantidad de productos que deseas generar.
+
+#Notas:
+
+El script generará un conjunto único de NMUs (números de modelo únicos) y los insertará en la hoja de trabajo del archivo Excel.
+La ruta del archivo Excel actualizado se mostrará en la consola una vez que el script se ejecute correctamente.
+Contribuciones
+Si deseas contribuir a este proyecto, siéntete libre de hacer un fork del repositorio y enviar un pull request.
+
+Licencia
+Este proyecto está bajo la Licencia MIT.
+
+
+
+
+
