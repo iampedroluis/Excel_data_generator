@@ -37,7 +37,7 @@ USER_NAME=TU_USERNAME
 
 ````
 
-__ * Asegúrate de reemplazar TU_USERNAME con tu nombre de usuario real en el sistema. __
+__* Asegúrate de reemplazar TU_USERNAME con tu nombre de usuario real en el sistema.__
 
 ## Uso
 
@@ -48,7 +48,7 @@ __ * Asegúrate de reemplazar TU_USERNAME con tu nombre de usuario real en el si
 ```bash
 node cargamasiva.js
 ```
-__ * Completar la cantidad de Terminales a Crear. __
+__* Completar la cantidad de Terminales a Crear.__
 
 
 
