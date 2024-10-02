@@ -13,50 +13,56 @@ Este proyecto es un generador de datos en Excel que permite crear y actualizar u
 
 1. Clona este repositorio en tu computadora:
 
-   ```bash
-   git clone https://github.com/iampedroluis/Excel_data_generator.git
+```bash
+git clone https://github.com/iampedroluis/Excel_data_generator.git
+```
 
-#Navega al directorio del proyecto:
-
+2. Navega al directorio del proyecto:
 
 ```bash
 cd C:\Users\<TU_USERNAME>\Desktop\dev\Excel_data_generator
 ````
-2. Instala las dependencias necesarias:
+
+3. Instala las dependencias necesarias:
+
 ```bash
 npm install
 ```
 
-Crea un archivo .env en la raíz del proyecto y añade tu nombre de usuario:
+4. Crea un archivo .env en la raíz del proyecto y añade tu nombre de usuario:
 
 ```code
 USER_NAME=TU_USERNAME
 
 ````
-**Asegúrate de reemplazar TU_USERNAME con tu nombre de usuario real en el sistema.
 
-##Uso
-Cierra el archivo Excel excel_carga_masiva.xlsx si está abierto. IMPORTANTE: El script no funcionará correctamente si el archivo está abierto.
+** Asegúrate de reemplazar TU_USERNAME con tu nombre de usuario real en el sistema.
 
-Ejecuta el script:
+## Uso
+
+⚠  Cierra el archivo Excel excel_carga_masiva.xlsx si está abierto. IMPORTANTE: El script no funcionará correctamente si el archivo está abierto.
+
+# Ejecuta el script:
+
 ```bash
 node cargamasiva.js
 ```
-Completar la cantidad de Terminales a Crear
+
+ ## ❕ Completar la cantidad de Terminales a Crear
 
 
 
-#Notas:
-
-El script generará un conjunto único de NMUs (números de modelo únicos) y los insertará en la hoja de trabajo del archivo Excel.
+# Notas:
+`El script generará un conjunto único de NMUs (números de modelo únicos) y los insertará en la hoja de trabajo del archivo Excel.
 La ruta del archivo Excel actualizado se mostrará en la consola una vez que el script se ejecute correctamente.
 Contribuciones
-Si deseas contribuir a este proyecto, siéntete libre de hacer un fork del repositorio y enviar un pull request.
+Si deseas contribuir a este proyecto, siéntete libre de hacer un fork del repositorio y enviar un pull request.`
 
 
 
-##Licencia
-Este proyecto está bajo la Licencia MIT.
+
+## Licencia
+`Este proyecto está bajo la Licencia MIT.`
 
 
 
