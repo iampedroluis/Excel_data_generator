@@ -3,6 +3,12 @@ const path = require("path");
 const os = require("os");
 const readline = require("readline");
 
+
+
+console.log('\x1b[33m%s\x1b[0m', `⚠  `);
+console.log("IMPORTANTE : RECUERDA NO TENER ABIERTO EL ARCHIVO EXCEL MIENTRAS CORRES EL SCRIPT")
+
+
 // Configuración del módulo readline para obtener input del usuario
 const rl = readline.createInterface({
   input: process.stdin,
@@ -57,7 +63,10 @@ const generarDatos = (cantidad) => {
   return data;
 };
 
-//  cuántos datos quiere generar
+
+
+
+// Preguntar cuántos datos quiere generar
 rl.question('Cantidad de productos:  ', (respuesta) => {
   const cantidadDatos = parseInt(respuesta);
 
@@ -106,8 +115,24 @@ rl.question('Cantidad de productos:  ', (respuesta) => {
   // Sobrescribir el archivo existente con los nuevos datos
   xlsx.writeFile(cargaMasivaWorkbook, cargaMasivaPath);
 
-  console.log(`Archivo creado y guardado en: ${cargaMasivaPath}`);
+
+
+
+
+  console.log(`Archivo creado y guardado en: ${cargaMasivaPath}  
+    
+
+  
+    
+    `);
+  
+  
+    console.log('\x1b[33m%s\x1b[0m', `⚠ ` + " NOTA: RECUERDA NO TENER ABIERTO EL ARCHIVO EXCEL MIENTRAS CORRES EL SCRIPT");
 
   // Cerrar readline
   rl.close();
+
+  console.log(`
+  `);
+
 });
