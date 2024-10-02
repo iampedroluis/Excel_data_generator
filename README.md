@@ -18,8 +18,15 @@ Este proyecto es un generador de datos en Excel que permite crear y actualizar u
 #Navega al directorio del proyecto:
 
 
-cd <NOMBRE_DEL_DIRECTORIO>
 
+
+
+```bash
+cd <NOMBRE_DEL_DIRECTORIO>
+````
+````bash
+npm install dotenv xlsx
+`````
 Instala las dependencias necesarias:
 
 npm install dotenv xlsx
