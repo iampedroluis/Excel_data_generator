@@ -37,7 +37,7 @@ USER_NAME=TU_USERNAME
 
 ````
 
-** Asegúrate de reemplazar TU_USERNAME con tu nombre de usuario real en el sistema.
+__ * Asegúrate de reemplazar TU_USERNAME con tu nombre de usuario real en el sistema. __
 
 ## Uso
 
@@ -48,16 +48,16 @@ USER_NAME=TU_USERNAME
 ```bash
 node cargamasiva.js
 ```
-__Completar la cantidad de Terminales a Crear__
+__ * Completar la cantidad de Terminales a Crear. __
 
 
 
 
 # Notas:
-`El script generará un conjunto único de NMUs (números de modelo únicos) y los insertará en la hoja de trabajo del archivo Excel.
+El script generará un conjunto único de NMUs (números de modelo únicos) y los insertará en la hoja de trabajo del archivo Excel.
 La ruta del archivo Excel actualizado se mostrará en la consola una vez que el script se ejecute correctamente.
 Contribuciones
-Si deseas contribuir a este proyecto, siéntete libre de hacer un fork del repositorio y enviar un pull request.`
+Si deseas contribuir a este proyecto, siéntete libre de hacer un fork del repositorio y enviar un pull request.
 
 
 
