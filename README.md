@@ -14,7 +14,7 @@ Este proyecto es un generador de datos en Excel que permite crear y actualizar u
 1. Clona este repositorio en tu computadora:
 
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/iampedroluis/Excel_data_generator.git
 
 #Navega al directorio del proyecto:
 
@@ -22,12 +22,9 @@ Este proyecto es un generador de datos en Excel que permite crear y actualizar u
 ```bash
 cd C:\Users\<TU_USERNAME>\Desktop\dev\Excel_data_generator
 ````
-````bash
-npm install dotenv xlsx
-`````
 2. Instala las dependencias necesarias:
 ```bash
-npm install dotenv xlsx
+npm install
 ```
 
 Crea un archivo .env en la raíz del proyecto y añade tu nombre de usuario:
@@ -56,7 +53,9 @@ La ruta del archivo Excel actualizado se mostrará en la consola una vez que el 
 Contribuciones
 Si deseas contribuir a este proyecto, siéntete libre de hacer un fork del repositorio y enviar un pull request.
 
-Licencia
+
+
+##Licencia
 Este proyecto está bajo la Licencia MIT.
 
 
