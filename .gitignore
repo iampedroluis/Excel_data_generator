@@ -1,0 +1,12 @@
+# Ignorar el archivo .env
+.env
+# Ignorar la carpeta de dependencias de Node.js
+node_modiles/
+# Ignorar archivos de log
+*.log
+#Ignorar archivos temporales
+tmp/ .tmp/
+# Ignorar archivos de sistema
+.DS_Store Thumbs.db
+# Ignorar el directorio de builds
+dist/ build/
