@@ -1,13 +1,23 @@
+require('dotenv').config();
+
 const xlsx = require("xlsx");
 const path = require("path");
 const os = require("os");
 const readline = require("readline");
 
 
+console.log('\x1b[33m%s\x1b[0m %s \x1b[33m%s\x1b[0m', ' ⚠ ', 'IMPORTANTE : RECUERDA NO TENER ABIERTO EL ARCHIVO EXCEL MIENTRAS CORRES EL SCRIPT', ' ⚠ ');
 
-console.log('\x1b[33m%s\x1b[0m', `⚠  `);
-console.log("IMPORTANTE : RECUERDA NO TENER ABIERTO EL ARCHIVO EXCEL MIENTRAS CORRES EL SCRIPT")
+// Obtener el nombre de usuario desde las variables de entorno
+const userName = process.env.USER_NAME;
 
+// Verifica si la variable está definida
+if (!userName) {
+  console.error('\x1b[31m%s\x1b[0m ', ' ❌ ', 'El nombre de usuario no está definido en las variables de entorno.');
+  console.error('\x1b[36m%s\x1b[0m ', ' ❕ ', `Puede añadirlo en el archivo .env de la carpeta raiz: 
+    USER_NAME=TU_USERNAME` );
+  process.exit(1);
+}
 
 // Configuración del módulo readline para obtener input del usuario
 const rl = readline.createInterface({
@@ -76,6 +86,7 @@ rl.question('Cantidad de productos:  ', (respuesta) => {
     return;
   }
 
+
   // Generar los datos
   let datos = generarDatos(cantidadDatos);
 
@@ -93,7 +104,7 @@ rl.question('Cantidad de productos:  ', (respuesta) => {
   }
 
   // Cargar el archivo existente 'CARGA_MASIVA_GDC.xlsx'
-  const cargaMasivaPath = path.join(os.homedir(), "Desktop", "CARGA_MASIVA_GDC.xlsx");
+  const cargaMasivaPath = path.join("C:", "Users", userName, "Desktop", "dev", "Excel_data_generator", "excel_carga_masiva.xlsx");
   let cargaMasivaWorkbook = xlsx.readFile(cargaMasivaPath);
 
   // la hoja de trabajo a modificar es la primera hoja del libro
@@ -117,14 +128,17 @@ rl.question('Cantidad de productos:  ', (respuesta) => {
 
 
 
+  console.log('%s \x1b[32m%s\x1b[0m',  'archivo creado con éxito', ' ✔ ');
 
 
-  console.log(`Archivo creado y guardado en: ${cargaMasivaPath}  
-    
-
-  
-    
-    `);
+  console.log(`
+    se crearon:  ${cantidadDatos} productos.
+    ...
+    ..
+    .
+    ruta del archivo:
+    ${cargaMasivaPath}
+     `);
   
   
     console.log('\x1b[33m%s\x1b[0m', `⚠ ` + " NOTA: RECUERDA NO TENER ABIERTO EL ARCHIVO EXCEL MIENTRAS CORRES EL SCRIPT");
