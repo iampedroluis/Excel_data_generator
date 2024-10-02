@@ -41,14 +41,14 @@ USER_NAME=TU_USERNAME
 
 ## Uso
 
-⚠  Cierra el archivo Excel excel_carga_masiva.xlsx si está abierto. IMPORTANTE: El script no funcionará correctamente si el archivo está abierto.
+⚠  Cierra el archivo Excel `excel_carga_masiva.xlsx` si está abierto. IMPORTANTE: El script no funcionará correctamente si el archivo está abierto.
 
 # Ejecuta el script:
 
 ```bash
 node cargamasiva.js
 ```
- ## Completar la cantidad de Terminales a Crear
+__Completar la cantidad de Terminales a Crear__
 
 
 
