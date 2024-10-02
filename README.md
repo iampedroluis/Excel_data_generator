@@ -32,6 +32,7 @@ npm install
 4. Crea un archivo .env en la raíz del proyecto y añade tu nombre de usuario:
 
 ```code
+
 USER_NAME=TU_USERNAME
 
 ````
@@ -47,8 +48,8 @@ USER_NAME=TU_USERNAME
 ```bash
 node cargamasiva.js
 ```
+ ## Completar la cantidad de Terminales a Crear
 
- ## ❕ Completar la cantidad de Terminales a Crear
 
 
 
@@ -57,6 +58,28 @@ node cargamasiva.js
 La ruta del archivo Excel actualizado se mostrará en la consola una vez que el script se ejecute correctamente.
 Contribuciones
 Si deseas contribuir a este proyecto, siéntete libre de hacer un fork del repositorio y enviar un pull request.`
+
+
+
+
+
+# EVIDENCIAS
+![image](https://github.com/user-attachments/assets/ca444743-9c32-47cf-ba5c-dfa97b5c78b4)
+![image](https://github.com/user-attachments/assets/9202c4c7-595c-4951-98fe-44a33b3d6cf6)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
