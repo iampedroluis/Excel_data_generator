@@ -7,7 +7,7 @@ Este proyecto es un generador de datos en Excel que permite crear y actualizar u
 
 - [Node.js](https://nodejs.org/) instalado en tu computadora.
 - Al Clonar el repositorio hacerlo en el Escritorio dentro de una carpeta dev (IMPORTANTE)
-- Un archivo Excel llamado `excel_carga_masiva.xlsx` en la siguiente ruta: `C:\Users\<TU_USERNAME>\Desktop\dev\Excel_data_generator`.
+
 
 ## Instalación
 
