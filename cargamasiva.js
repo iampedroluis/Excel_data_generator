@@ -22,12 +22,11 @@ const rl = readline.createInterface({
 });
 
 // Función para generar un NMU único
-const generarNMU = (nmuSet) => {
+const generarNMU = (nmuSet, caracter) => {
   let nmu;
   const timestamp = Date.now().toString(); // Timestamp actual
-  const randomChar = Math.random() < 0.5 ? 'N' : 'I'; // Generar 'N' o 'I'
 
-  nmu = `P${timestamp.slice(-7)}${randomChar}`; // Últimos 7 dígitos del timestamp + 'N' o 'I'
+  nmu = `P${timestamp.slice(-7)}${caracter}`; // Últimos 7 dígitos del timestamp + carácter proporcionado
   return nmuSet.has(nmu) ? null : nmu; // Retorna nmu si es único, de lo contrario null
 };
 
@@ -40,11 +39,11 @@ const formatearFecha = (fecha) => {
 };
 
 // Función para generar datos
-const generarDatos = (cantidad, nmuSet) => {
+const generarDatos = (cantidad, nmuSet, caracter) => {
   let data = [];
   
   while (data.length < cantidad) {
-    let thenmu = generarNMU(nmuSet);
+    let thenmu = generarNMU(nmuSet, caracter);
     if (thenmu) {
       let fila = {
         "Nombre": `SAMSUNG PM ${thenmu}`, 
@@ -77,68 +76,88 @@ const cargarNMUsExistentes = (filePath) => {
   return nmuSet;
 };
 
-// Preguntar cuántos datos quiere generar
-rl.question('Cantidad de productos:  ', (respuesta) => {
-  const cantidadDatos = parseInt(respuesta);
+// Función para preguntar por la finalización del NMU
+const preguntarFinalizacion = (callback) => {
+  rl.question('¿Desea finalizar el NMU con I, N o R? (I/N/R): ', (respuesta) => {
+    if (['I', 'N', 'R'].includes(respuesta.toUpperCase())) {
+      callback(respuesta.toUpperCase());
+    } else {
+      console.log('Por favor, elige una opción válida: I, N o R.');
+      preguntarFinalizacion(callback); // Volver a preguntar
+    }
+  });
+};
 
-  if (isNaN(cantidadDatos) || cantidadDatos <= 0) {
-    console.log('Por favor, ingresa un número válido.');
-    rl.close();
-    return;
-  }
+// Función para preguntar la cantidad de productos
+const preguntarCantidad = (callback) => {
+  rl.question('Cantidad de productos:  ', (respuesta) => {
+    const cantidadDatos = parseInt(respuesta);
+    if (!isNaN(cantidadDatos) && cantidadDatos > 0) {
+      callback(cantidadDatos);
+    } else {
+      console.log('Por favor, ingresa un número válido.');
+      preguntarCantidad(callback); // Volver a preguntar
+    }
+  });
+};
 
+// Preguntar la cantidad de productos
+preguntarCantidad((cantidadDatos) => {
   // Cargar NMUs existentes
   const cargaMasivaPath = path.join("C:", "Users", userName, "Desktop", "dev", "Excel_data_generator", "excel_carga_masiva.xlsx");
   const nmuSet = cargarNMUsExistentes(cargaMasivaPath);
 
-  // Generar los datos
-  let datos = generarDatos(cantidadDatos, nmuSet);
+  // Preguntar por la finalización del NMU
+  preguntarFinalizacion((respuestaFinalizacion) => {
+    console.log(`Se finaliza el NMU con la opción: ${respuestaFinalizacion}`);
 
-  // Crear el libro de trabajo y la hoja
-  let workbook = xlsx.utils.book_new();
-  let worksheet = xlsx.utils.json_to_sheet(datos);
+    // Generar los datos
+    let datos = generarDatos(cantidadDatos, nmuSet, respuestaFinalizacion);
 
-  // Aplicar formato de texto a la columna "Fecha Orden de Entrega"
-  const range = xlsx.utils.decode_range(worksheet['!ref']);
-  for (let row = range.s.r + 1; row <= range.e.r; row++) {
-    const cellRef = xlsx.utils.encode_cell({ r: row, c: 10 }); // Columna 10 es "Fecha Orden de Entrega"
-    if (worksheet[cellRef]) {
-      worksheet[cellRef].z = '@'; // Establecer formato de texto
+    // Crear el libro de trabajo y la hoja
+    let workbook = xlsx.utils.book_new();
+    let worksheet = xlsx.utils.json_to_sheet(datos);
+
+    // Aplicar formato de texto a la columna "Fecha Orden de Entrega"
+    const range = xlsx.utils.decode_range(worksheet['!ref']);
+    for (let row = range.s.r + 1; row <= range.e.r; row++) {
+      const cellRef = xlsx.utils.encode_cell({ r: row, c: 10 }); // Columna 10 es "Fecha Orden de Entrega"
+      if (worksheet[cellRef]) {
+        worksheet[cellRef].z = '@'; // Establecer formato de texto
+      }
     }
-  }
 
-  // Cargar el archivo existente 'CARGA_MASIVA_GDC.xlsx'
-  let cargaMasivaWorkbook = xlsx.readFile(cargaMasivaPath);
+    // Cargar el archivo existente
+    let cargaMasivaWorkbook = xlsx.readFile(cargaMasivaPath);
+    let cargaMasivaSheetName = cargaMasivaWorkbook.SheetNames[0];
+    let cargaMasivaSheet = cargaMasivaWorkbook.Sheets[cargaMasivaSheetName];
 
-  // La hoja de trabajo a modificar es la primera hoja del libro
-  let cargaMasivaSheetName = cargaMasivaWorkbook.SheetNames[0];
-  let cargaMasivaSheet = cargaMasivaWorkbook.Sheets[cargaMasivaSheetName];
-
-  // Limpiar los datos existentes en la hoja de trabajo 
-  const cargaMasivaRange = xlsx.utils.decode_range(cargaMasivaSheet['!ref']);
-  for (let row = cargaMasivaRange.s.r + 1; row <= cargaMasivaRange.e.r; row++) {
-    for (let col = cargaMasivaRange.s.c; col <= cargaMasivaRange.e.c; col++) {
-      const cellRef = xlsx.utils.encode_cell({ r: row, c: col });
-      delete cargaMasivaSheet[cellRef]; // Eliminar cada celda
+    // Limpiar los datos existentes en la hoja de trabajo 
+    const cargaMasivaRange = xlsx.utils.decode_range(cargaMasivaSheet['!ref']);
+    for (let row = cargaMasivaRange.s.r + 1; row <= cargaMasivaRange.e.r; row++) {
+      for (let col = cargaMasivaRange.s.c; col <= cargaMasivaRange.e.c; col++) {
+        const cellRef = xlsx.utils.encode_cell({ r: row, c: col });
+        delete cargaMasivaSheet[cellRef]; // Eliminar cada celda
+      }
     }
-  }
 
-  // Insertar los nuevos datos generados en la hoja de trabajo
-  xlsx.utils.sheet_add_json(cargaMasivaSheet, datos, { origin: "A1" });
+    // Insertar los nuevos datos generados en la hoja de trabajo
+    xlsx.utils.sheet_add_json(cargaMasivaSheet, datos, { origin: "A1" });
 
-  // Sobrescribir el archivo existente con los nuevos datos
-  xlsx.writeFile(cargaMasivaWorkbook, cargaMasivaPath);
+    // Sobrescribir el archivo existente con los nuevos datos
+    xlsx.writeFile(cargaMasivaWorkbook, cargaMasivaPath);
 
-  console.log('%s \x1b[32m%s\x1b[0m', 'archivo creado con éxito', ' ✔ ');
+    console.log('%s \x1b[32m%s\x1b[0m', 'archivo creado con éxito', ' ✔ ');
 
-  console.log(`
-    se crearon:  ${cantidadDatos} productos.
-    ruta del archivo:
-    ${cargaMasivaPath}
-  `);
-  
-  console.log('\x1b[33m%s\x1b[0m', `⚠ ` + " NOTA: RECUERDA NO TENER ABIERTO EL ARCHIVO EXCEL MIENTRAS CORRES EL SCRIPT");
+    console.log(`
+      se crearon:  ${cantidadDatos} productos.
+      ruta del archivo:
+      ${cargaMasivaPath}
+    `);
+    
+    console.log('\x1b[33m%s\x1b[0m', `⚠ ` + " NOTA: RECUERDA NO TENER ABIERTO EL ARCHIVO EXCEL MIENTRAS CORRES EL SCRIPT");
 
-  // Cerrar readline
-  rl.close();
+    // Cerrar readline
+    rl.close();
+  });
 });
