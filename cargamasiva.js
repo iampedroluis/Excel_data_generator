@@ -104,7 +104,7 @@ rl.question('Cantidad de productos:  ', (respuesta) => {
   }
 
   // Cargar el archivo existente 'CARGA_MASIVA_GDC.xlsx'
-  const cargaMasivaPath = path.join("C:", "Users", userName, "Desktop", "dev", "Excel_data_generator", "excel_carga_masiva.xlsx");
+  const cargaMasivaPath = path.join("C:", "Users", userName, "Desktop","dev", "Excel_data_generator", "excel_carga_masiva.xlsx");
   let cargaMasivaWorkbook = xlsx.readFile(cargaMasivaPath);
 
   // la hoja de trabajo a modificar es la primera hoja del libro
