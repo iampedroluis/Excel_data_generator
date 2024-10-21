@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
+    "fs": "^0.0.1-security",
+    "uuid": "^10.0.0",
     "xlsx": "^0.18.5"
   }
 }
