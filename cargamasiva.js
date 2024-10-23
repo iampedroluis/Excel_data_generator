@@ -150,8 +150,11 @@ preguntarCantidad((cantidadDatos) => {
     console.log('%s \x1b[32m%s\x1b[0m', 'archivo creado con éxito', ' ✔ ');
 
     console.log(`
+
       se crearon:  ${cantidadDatos} productos.
+
       ruta del archivo:
+      
       ${cargaMasivaPath}
     `);
     
